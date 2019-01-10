@@ -9,6 +9,7 @@ public class BuyButton : MonoBehaviour
     public GameObject effectBuyingItem;
     public Text state; // Unlock or lock
     public Text itemCoinText;
+    private const string unlock = "UNLOCK";
     private void Start()
     {
         itemID = shopManager.snap.getMinButtonNum();
@@ -63,7 +64,7 @@ public class BuyButton : MonoBehaviour
             {
                 childs.GetChild(j).gameObject.SetActive(true);
             }
-            state.text = "UNLOCK";
+            state.text = unlock;
         }
         else
         {
