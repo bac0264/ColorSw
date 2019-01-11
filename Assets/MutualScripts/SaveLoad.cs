@@ -25,14 +25,13 @@ public class SaveLoad : MonoBehaviour
         public List<Item> itemList = new List<Item>();
         public List<Item> boughts = new List<Item>();
         public int currentItemID = 0;
-        public int coin = 500;
     }
 
 
     [Serializable]
     public class SaveCoin
     {
-        public int coin;
+        public int coin = 0;
     }
     public void saving(ShopManager shopManager, string urlShop)
     {
@@ -53,7 +52,6 @@ public class SaveLoad : MonoBehaviour
                 saveData.boughts.Add(shopManager.boughtList[i]);
             }
             saveData.currentItemID = shopManager.currentItemID;
-            saveData.coin = shopManager.coinManager.getCoin();
             //
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fs = new FileStream(Application.persistentDataPath + urlShop, FileMode.OpenOrCreate);
@@ -90,8 +88,6 @@ public class SaveLoad : MonoBehaviour
                     shopManager.itemList.Add(saveData.itemList[i]);
                 }
                 shopManager.currentItemID = saveData.currentItemID;
-                Debug.Log("shopManager.currentItemID: " + shopManager.currentItemID);
-                shopManager.coinManager.setCoin(saveData.coin);
             }
             catch (Exception e)
             {
@@ -100,15 +96,14 @@ public class SaveLoad : MonoBehaviour
         }
     }
 
-    public void savingCoin(ShopManager shopManager, string urlShop)
+    public void savingCoin(CoinManager coinManager, string urlShop)
     {
         try
         {
-            Debug.Log("shopManager: " + shopManager);
             SaveCoin saveData = new SaveCoin();
             // Save Data
             // Do something
-            saveData.coin = shopManager.coinManager.getCoin();
+            saveData.coin = coinManager.getCoin();
             //
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fs = new FileStream(Application.persistentDataPath + urlShop, FileMode.OpenOrCreate);
@@ -120,5 +115,27 @@ public class SaveLoad : MonoBehaviour
             print(e);
         }
         print("saved data to " + Application.persistentDataPath + urlShop);
+    }
+
+    public void loadingCoin(CoinManager coinManager, string urlShop)
+    {
+        Debug.Log(Application.persistentDataPath + urlShop);
+        if (File.Exists(Application.persistentDataPath + urlShop))
+        {
+            try
+            {
+                SaveCoin saveData = new SaveCoin();
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream fs = new FileStream(Application.persistentDataPath + urlShop, FileMode.Open);
+                saveData = (SaveCoin)bf.Deserialize(fs);
+                fs.Close();
+                // do somthing
+                coinManager.setCoin(saveData.coin);
+            }
+            catch (Exception e)
+            {
+                print(e);
+            }
+        }
     }
 }

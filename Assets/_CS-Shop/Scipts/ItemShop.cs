@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ItemShop : ShopManager
 {
     public static ItemShop instance;
-    private void Start()
+    private void Awake()
     {
         if (instance == null) instance = this;
 
@@ -14,7 +14,6 @@ public class ItemShop : ShopManager
 
         //Load data
         loading();
-
         // setup ui
         if (itemList != null)
         {
@@ -89,11 +88,13 @@ public class ItemShop : ShopManager
     public void loading()
     {
         SaveLoad.instance.loading(this, urlShop);
+        coinManager.loadingCoin();
     }
     override
     public void saving()
     {
         SaveLoad.instance.saving(this, urlShop);
+        coinManager.savingCoin();
     }
 }
 

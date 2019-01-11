@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{21BBD3F7-E55A-FEF3-128A-58CBD6DE2C3E}</ProjectGuid>
+    <ProjectGuid>{BB6C0040-5A7D-18BD-3854-4CC58B255A89}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -61,14 +61,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_CS-MainGame\Scripts\FollowPlayer.cs" />
+    <Compile Include="Assets\_CS-MainGame\Scripts\Generator.cs" />
     <Compile Include="Assets\_CS-MainGame\Scripts\Player.cs" />
     <Compile Include="Assets\_CS-MainGame\Scripts\Rotator.cs" />
+    <Compile Include="Assets\_CS-Menu\Scripts\MenuManager.cs" />
     <Compile Include="Assets\_CS-Shop\Scipts\ButtonManager.cs" />
     <Compile Include="Assets\_CS-Shop\Scipts\BuyButton.cs" />
-    <Compile Include="Assets\_CS-Shop\Scipts\CoinManager.cs" />
     <Compile Include="Assets\_CS-Shop\Scipts\Item.cs" />
     <Compile Include="Assets\_CS-Shop\Scipts\ItemShop.cs" />
-    <Compile Include="Assets\_CS-Shop\Scipts\SaveLoad.cs" />
     <Compile Include="Assets\_CS-Shop\Scipts\ShopManager.cs" />
     <Compile Include="Assets\_CS-Shop\Scipts\Snap.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
@@ -78,20 +78,22 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
+    <Compile Include="Assets\MutualScripts\CoinManager.cs" />
+    <Compile Include="Assets\MutualScripts\SaveLoad.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/pv/Desktop/Color-Switch-Replica/Color Switch Replica/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/pv/Desktop/ColorSw/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/pv/Desktop/Color-Switch-Replica/Color Switch Replica/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/pv/Desktop/ColorSw/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/pv/Desktop/Color-Switch-Replica/Color Switch Replica/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/pv/Desktop/ColorSw/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/pv/Desktop/Color-Switch-Replica/Color Switch Replica/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/pv/Desktop/ColorSw/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/pv/Desktop/Color-Switch-Replica/Color Switch Replica/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/pv/Desktop/ColorSw/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.0f2/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -291,23 +293,23 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.0f2/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>C:/Users/pv/Desktop/ColorSw/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>C:/Users/pv/Desktop/Color-Switch-Replica/Color Switch Replica/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>C:/Users/pv/Desktop/ColorSw/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>C:/Users/pv/Desktop/Color-Switch-Replica/Color Switch Replica/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+      <HintPath>C:/Users/pv/Desktop/ColorSw/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/pv/Desktop/Color-Switch-Replica/Color Switch Replica/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/pv/Desktop/ColorSw/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/pv/Desktop/Color-Switch-Replica/Color Switch Replica/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/pv/Desktop/ColorSw/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/pv/Desktop/Color-Switch-Replica/Color Switch Replica/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>C:/Users/pv/Desktop/Color-Switch-Replica/Color Switch Replica/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>C:/Users/pv/Desktop/ColorSw/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.0f2/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

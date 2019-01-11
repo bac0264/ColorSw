@@ -6,11 +6,12 @@ public class CoinManager : MonoBehaviour {
     public static CoinManager instance;
     private int coin;
     public Text coinText;
+    private const string urlCoin = "Coin";
 
     private void Start()
     {
         if (instance == null) instance = this;
-        coin = 1000;
+        loadingCoin();
     }
     public void addCoin(int amount)
     {
@@ -38,5 +39,19 @@ public class CoinManager : MonoBehaviour {
     public int getCoin()
     {
         return coin;
+    }
+    public void loadingCoin()
+    {
+        if (SaveLoad.instance != null)
+        {
+            SaveLoad.instance.loadingCoin(this, urlCoin);
+        }
+    }
+    public void savingCoin()
+    {
+        if (SaveLoad.instance != null)
+        {
+            SaveLoad.instance.savingCoin(this, urlCoin);
+        }
     }
 }
