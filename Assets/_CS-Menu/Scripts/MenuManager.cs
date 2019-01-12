@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
+    public GameObject mainGame;
     public void Sound()
     {
 
@@ -37,10 +38,5 @@ public class MenuManager : MonoBehaviour
     public void Rate()
     {
         Application.OpenURL("market://details?id=com.zergitas.colorswitch");
-    }
-
-    public void Play()
-    {
-        SceneManager.LoadScene("Main");
     }
 }

@@ -37,11 +37,11 @@ public class ItemShop : ShopManager
                 itemObjectList[i].transform.GetChild(0).GetComponent<Image>().color
                      = new Color(1, 1, 1, 1);
                 itemObjectList[i].transform.GetChild(0).GetComponent<Image>().sprite = imageItemList[i];
-                // snake chua su dung
+                // item chua su dung
                 if (itemList[i].itemID != currentItemID)
                 {
                 }
-                // snake da mua va su dung
+                // item da mua va su dung
                 else
                 {
 
@@ -72,11 +72,11 @@ public class ItemShop : ShopManager
                     itemObjectList[j].transform.GetChild(0).GetComponent<Image>().material = null;
                     itemObjectList[j].transform.GetChild(0).GetComponent<Image>().color
                          = new Color(1, 1, 1, 1);
-                    // snake item da mua nhung k su dung
+                    //item da mua nhung k su dung
                     if (itemList[j].itemID != currentItemID)
                     {
                     }
-                    // snake da mua va su dung
+                    //item da mua va su dung
                     else
                     {
                     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class BuyButton : MonoBehaviour
 {
     public int itemID;
@@ -26,26 +27,6 @@ public class BuyButton : MonoBehaviour
                 return;
             }
             checkShow(i);
-        }
-    }
-    // mua item
-    public void _toBuyItem()
-    {
-        int i = getIndexOfItem();
-        if (itemID == -1)
-        {
-            Debug.Log("Error");
-            return;
-        }
-        // check bought
-        checkBought(i);
-    }
-
-    // update Item
-    public void Oke()
-    {
-        if (shopManager.itemList[getIndexOfItem()].bought){
-            _updateUI(itemID);
         }
     }
 
@@ -79,9 +60,35 @@ public class BuyButton : MonoBehaviour
             }
         }
     }
+    // update Item
+    public void Oke()
+    {
+        if (shopManager.itemList[getIndexOfItem()].bought)
+        {
+            _updateUI(itemID);
+        }
+
+        
+    }
+    // mua item
+    public void _toBuyItem()
+    {
+        int i = getIndexOfItem();
+        if (itemID == -1)
+        {
+            Debug.Log("Error");
+            return;
+        }
+        // check bought
+        checkBought(i);
+    }
+
+
+
     // Check if chua mua thi xu ly, da mua roi thi update
     public void checkBought(int i)
     {
+        // chua mua thi se xu ly
         if (!shopManager.itemList[i].bought)
         {
             _buyingProcess(itemID);
@@ -91,6 +98,18 @@ public class BuyButton : MonoBehaviour
             _updateUI(itemID);
             //   SaveLoad.instance.saving();
         }
+    }
+    // xu ly mua
+    void _buyingProcess(int _itemID)
+    {
+        shopManager._buyItem(_itemID);
+        shopManager.saving();
+    }
+
+    void _updateUI(int _itemID)
+    {
+        shopManager._updateItem(_itemID);
+        shopManager.saving();
     }
     // lay vi tri cua item da pick
     public int getIndexOfItem()
@@ -105,17 +124,4 @@ public class BuyButton : MonoBehaviour
         }
         return 0;
     }
-    // xu ly mua
-    void _buyingProcess(int _itemID)
-    {
-        shopManager._buyItem(_itemID);
-        shopManager.saving();
-    }
-
-    void _updateUI(int _itemID)
-    {
-        shopManager._updateItem(_itemID);
-        shopManager.saving();
-    }
-    
 }

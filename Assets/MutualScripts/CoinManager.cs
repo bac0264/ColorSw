@@ -45,6 +45,7 @@ public class CoinManager : MonoBehaviour {
         if (SaveLoad.instance != null)
         {
             SaveLoad.instance.loadingCoin(this, urlCoin);
+            UpdateCoin();
         }
     }
     public void savingCoin()
