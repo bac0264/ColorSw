@@ -1,21 +1,17 @@
 ﻿using UnityEngine;
 
 public class Rotator : MonoBehaviour {
-    private bool check = false;
-	public float speed = 100f;
-    private void Start()
-    {   
-    }
+	//public float speed = 100f;
+
     // Update is called once per frame
-    void Update () {
-		transform.Rotate(0f, 0f, speed * Time.deltaTime);
-	}
-    public void setCheck(bool _check)
+    public Vector3 spinStrength = new Vector3(0, 0, 1);
+    public bool active = false;
+
+    void Update()
     {
-        check = _check;
-    }
-    public bool getCheck()
-    {
-        return check;
+        if (active)
+        {
+            transform.Rotate(spinStrength);
+        }
     }
 }

@@ -9,6 +9,7 @@ public class SaveLoad : MonoBehaviour
     public static SaveLoad instance;
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         if (instance == null)
         {
             instance = this;
@@ -26,6 +27,7 @@ public class SaveLoad : MonoBehaviour
         public List<Item> boughts = new List<Item>();
     }
 
+    [Serializable]
     public class SaveID
     {
         public int currentItemID = 0;
@@ -33,7 +35,7 @@ public class SaveLoad : MonoBehaviour
     [Serializable]
     public class SaveCoin
     {
-        public int coin = 0;
+        public int coin = 1000;
     }
     public void saving(ShopManager shopManager, string urlShop)
     {
@@ -160,9 +162,9 @@ public class SaveLoad : MonoBehaviour
         }
         print("saved data to " + Application.persistentDataPath + urlShop);
     }
-    public void loadingID(int id, string urlShop)
+    public void loadingID(ref int id, string urlShop)
     {
-        Debug.Log(Application.persistentDataPath + urlShop);
+        Debug.Log(File.Exists(Application.persistentDataPath + urlShop));
         if (File.Exists(Application.persistentDataPath + urlShop))
         {
             try

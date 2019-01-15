@@ -11,6 +11,7 @@ public class CoinManager : MonoBehaviour {
     private void Start()
     {
         if (instance == null) instance = this;
+        coin = 1000;
         loadingCoin();
     }
     public void addCoin(int amount)

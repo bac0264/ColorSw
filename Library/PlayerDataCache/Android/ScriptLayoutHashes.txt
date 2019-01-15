@@ -1,13 +1,13 @@
 Android
 PlayerPath?
-C:/Users/pv/Desktop/ColorSw/CS_20191501_1.apk
+C:/Users/User/Desktop/ColorSw/CS_20191501_2.apk
 SceneListBegin?
 Assets/Scenes/Main.unity
 Assets/Scenes/Shop.unity
 SceneListEnd?
 b170628f79d0cf416900afaae2243a3b Assembly-CSharp.dll:.ShopManager
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
-afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.Rotator
+2ddb1eddce8137c07117fd0d8b77753c Assembly-CSharp.dll:.Rotator
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -118,11 +118,13 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 9a87526c894d9fc2052bb3c97658fbd7 Assembly-CSharp.dll:.ScoreManager
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.CheckObject
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
 291df8fa0802e4ad2d9ff86948798670 Assembly-CSharp.dll:.BuyButton
 94017dcc9f00fe671ea7dc427b4da011 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 65b3a3b9a7779d539ec75a3ceddebdba Assembly-CSharp.dll:.FollowPlayer
+42da108d42a5224e91e91a1f158ba852 Assembly-CSharp.dll:.LoseManager
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
@@ -167,7 +169,7 @@ f85bd6f7e75dc8472268c8569a3d0abc Assembly-CSharp.dll:.CoinManager
 844f398a1372e49b5e1e6de56915cad2 Assembly-CSharp.dll:.MenuManager
 a4f0a4f62100f1a4fb5cbe0e00dde83f Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 5fc094978ce3e3591a7500ed380d854a Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
-a36cdf7660b3b0f3d10b56ca242dc77e Assembly-CSharp.dll:.Player
+c8692f5d101e9815407f522cc2d4e144 Assembly-CSharp.dll:.Player
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
@@ -175,4 +177,3 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 0c7501b97962e919f794b7618931c419 Assembly-CSharp.dll:.Generator
 e01181e9c4a06574cf7088b639d75681 Assembly-CSharp.dll:.ButtonManager
-42da108d42a5224e91e91a1f158ba852 Assembly-CSharp.dll:.LoseManager

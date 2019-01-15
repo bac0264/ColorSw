@@ -27,11 +27,11 @@ public class Generator : MonoBehaviour
     // generate barriers with coin and color changer
     IEnumerator generate(GameObject obj, Vector3 pos, GameObject pref)
     {
-        if (obj.GetComponent<Rotator>() != null)
+        obj.GetComponent<Collider2D>().enabled = false;
+        if (obj.GetComponent<CheckObject>() != null)
         {
-            if (obj.GetComponent<Rotator>().getCheck())
+            if (obj.GetComponent<CheckObject>().getCheck())
             {
-                obj.GetComponent<Collider2D>().enabled = false;
                 GameObject _obj = Instantiate(pref, pos, Quaternion.identity);
                 _obj.transform.SetParent(container);
                 if (randomCoin())
@@ -53,15 +53,15 @@ public class Generator : MonoBehaviour
     // rate to generate coin 1/4
     bool randomCoin()
     {
-        int random = Random.Range(0, 4);
-        if (random == 3) return true;
+        int random = Random.Range(0, 3);
+        if (random == 2) return true;
         return false;
     }
     // rate to gernate color changer 1/3
     bool randomChangeColor()
     {
-        int random = Random.Range(0, 3);
-        if (random == 2) return true;
+        int random = Random.Range(0, 2);
+        if (random == 1) return true;
         return false;
     }
 

@@ -89,7 +89,7 @@ public class ItemShop : ShopManager
     {
         SaveLoad.instance.loading(this, urlShop);
         coinManager.loadingCoin();
-        SaveLoad.instance.loadingID(currentItemID,"id");
+        SaveLoad.instance.loadingID(ref currentItemID,"id");
     }
     override
     public void saving()

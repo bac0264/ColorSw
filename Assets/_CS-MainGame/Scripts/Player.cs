@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer sr;
 
     public string currentColor;
-
+    public int _currentColor = -1;
     public Color colorCyan;
     public Color colorYellow;
     public Color colorMagenta;
@@ -30,17 +30,18 @@ public class Player : MonoBehaviour
     const int O_distanceTutorial = -6;
     const int addScore = 1;
 
-    public int currentID;
+    public int currentID = 0;
     public int score = 0;
     public int temp = 0;
     void Start()
     {
         SetRandomColor();
+        _setupSprite();
     }
 
     void _setupSprite()
     {
-        SaveLoad.instance.loadingID(currentID, "id");
+        SaveLoad.instance.loadingID(ref currentID, "id");
         gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[currentID];
     }
     public void tutorialIn()
@@ -96,12 +97,11 @@ public class Player : MonoBehaviour
         }
         if (col.tag == "Check")
         {
-            Debug.Log("score: " + score);
             score += addScore;
             scoreManager.setScore(score);
             scoreManager.setHighScore(scoreManager.getScore());
             scoreManager.scoreDisplay();
-            col.GetComponent<Rotator>().setCheck(true);
+            col.GetComponent<CheckObject>().setCheck(true);
             Vector3 pos = transform.position;
             pos.y += generator.distance;
             generator.generateObject(col.gameObject, pos);
@@ -112,7 +112,21 @@ public class Player : MonoBehaviour
     void SetRandomColor()
     {
         int index = Random.Range(0, 4);
-
+        if (_currentColor == -1)
+        {
+            _currentColor = index;
+        }
+        else
+        {
+            if (_currentColor == index)
+            {
+                while (_currentColor == index)
+                {
+                    index = Random.Range(0, 4);
+                }
+            }
+        }
+        _currentColor = index;
         switch (index)
         {
             case 0:
@@ -141,7 +155,6 @@ public class Player : MonoBehaviour
         temp = 0;
         score = 0;
         scoreManager.setScore(score);
-        Debug.Log(" scoreManager.getScore(score): " + scoreManager.getScore());
         transform.position = pos;
         scoreManager.scoreDisplay();
     }
