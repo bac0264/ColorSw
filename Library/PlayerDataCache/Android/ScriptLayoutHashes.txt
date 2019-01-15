@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/User/Desktop/ColorSw/CS_20191501_2.apk
+C:/Users/pv/Desktop/ColorSw/CS_20191601_1.apk
 SceneListBegin?
 Assets/Scenes/Main.unity
 Assets/Scenes/Shop.unity

@@ -67,13 +67,15 @@ public class Process : MonoBehaviour
     IEnumerator timetoBack()
     {
         // resetup barrier default
-        _setupBarrier();
+        defaultBarrier.transform.DOMoveY(barriderDefaultOut.y, 0.3f);
         // scale up
         Tween fade = mainManager.transform.DOScale(0, 0.3f);
        // container.DOScale(0, 0.2f);
         Camera.main.transform.DOMoveY(0, 0.5f);
+
         yield return fade.WaitForCompletion();
 
+        _setupBarrier();
         // hide maingame and container
         mainManager.SetActive(false);
         mainManager.transform.localScale = scaleDefault;
