@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Player : MonoBehaviour
     public Generator generator;
     public ScoreManager scoreManager;
     public float jumpForce = 10f;
-
+    public List<Sprite> spriteList = new List<Sprite>();
 
     public Rigidbody2D rb;
     public SpriteRenderer sr;
@@ -29,11 +30,18 @@ public class Player : MonoBehaviour
     const int O_distanceTutorial = -6;
     const int addScore = 1;
 
-    int score = 0;
+    public int currentID;
+    public int score = 0;
     public int temp = 0;
     void Start()
     {
         SetRandomColor();
+    }
+
+    void _setupSprite()
+    {
+        SaveLoad.instance.loadingID(currentID, "id");
+        gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[currentID];
     }
     public void tutorialIn()
     {
@@ -83,14 +91,15 @@ public class Player : MonoBehaviour
         if (col.tag != currentColor && col.tag != "Coin" && col.tag != "Check")
         {
             Debug.Log("GAME OVER!");
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Process.instance._lose();
             
         }
         if (col.tag == "Check")
         {
+            Debug.Log("score: " + score);
             score += addScore;
             scoreManager.setScore(score);
-            scoreManager.setHighScore(addScore);
+            scoreManager.setHighScore(scoreManager.getScore());
             scoreManager.scoreDisplay();
             col.GetComponent<Rotator>().setCheck(true);
             Vector3 pos = transform.position;
@@ -123,5 +132,17 @@ public class Player : MonoBehaviour
                 sr.color = colorPink;
                 break;
         }
+    }
+
+    public void setupPlayer(Vector3 pos)
+    {
+        tutorialIn();
+        gameObject.GetComponent<Collider2D>().isTrigger = false;
+        temp = 0;
+        score = 0;
+        scoreManager.setScore(score);
+        Debug.Log(" scoreManager.getScore(score): " + scoreManager.getScore());
+        transform.position = pos;
+        scoreManager.scoreDisplay();
     }
 }

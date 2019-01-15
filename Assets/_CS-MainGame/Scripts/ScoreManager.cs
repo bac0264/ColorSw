@@ -18,8 +18,10 @@ public class ScoreManager : MonoBehaviour
     {
         scoreText.text = getScore().ToString();
     }
+
     public void scoreDisplay(Text _scoreText)
     {
+        Debug.Log("getScore: " + getScore());
         _scoreText.text = getScore().ToString();
     }
     public void highScoreDisPlay(Text highText)

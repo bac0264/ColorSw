@@ -24,10 +24,12 @@ public class SaveLoad : MonoBehaviour
     {
         public List<Item> itemList = new List<Item>();
         public List<Item> boughts = new List<Item>();
-        public int currentItemID = 0;
     }
 
-
+    public class SaveID
+    {
+        public int currentItemID = 0;
+    }
     [Serializable]
     public class SaveCoin
     {
@@ -51,7 +53,6 @@ public class SaveLoad : MonoBehaviour
             {
                 saveData.boughts.Add(shopManager.boughtList[i]);
             }
-            saveData.currentItemID = shopManager.currentItemID;
             //
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fs = new FileStream(Application.persistentDataPath + urlShop, FileMode.OpenOrCreate);
@@ -87,7 +88,6 @@ public class SaveLoad : MonoBehaviour
                 {
                     shopManager.itemList.Add(saveData.itemList[i]);
                 }
-                shopManager.currentItemID = saveData.currentItemID;
             }
             catch (Exception e)
             {
@@ -131,6 +131,49 @@ public class SaveLoad : MonoBehaviour
                 fs.Close();
                 // do somthing
                 coinManager.setCoin(saveData.coin);
+            }
+            catch (Exception e)
+            {
+                print(e);
+            }
+        }
+    }
+    public void savingID(ShopManager shopManager, string urlShop)
+    {
+        try
+        {
+            Debug.Log("shopManager: " + shopManager);
+            SaveID saveData = new SaveID();
+            // Save Data
+
+            // Do something
+            saveData.currentItemID = shopManager.currentItemID;
+            //
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = new FileStream(Application.persistentDataPath + urlShop, FileMode.OpenOrCreate);
+            bf.Serialize(fs, saveData);
+            fs.Close();
+        }
+        catch (Exception e)
+        {
+            print(e);
+        }
+        print("saved data to " + Application.persistentDataPath + urlShop);
+    }
+    public void loadingID(int id, string urlShop)
+    {
+        Debug.Log(Application.persistentDataPath + urlShop);
+        if (File.Exists(Application.persistentDataPath + urlShop))
+        {
+            try
+            {
+                SaveID saveData = new SaveID();
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream fs = new FileStream(Application.persistentDataPath + urlShop, FileMode.Open);
+                saveData = (SaveID)bf.Deserialize(fs);
+                fs.Close();
+                // do somthing
+                id = saveData.currentItemID;
             }
             catch (Exception e)
             {

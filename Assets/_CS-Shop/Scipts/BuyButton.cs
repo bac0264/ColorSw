@@ -110,6 +110,7 @@ public class BuyButton : MonoBehaviour
     {
         shopManager._updateItem(_itemID);
         shopManager.saving();
+        SceneManager.LoadScene("Main");
     }
     // lay vi tri cua item da pick
     public int getIndexOfItem()

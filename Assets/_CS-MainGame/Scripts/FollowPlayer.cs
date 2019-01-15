@@ -1,10 +1,13 @@
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour {
-
-	public Transform player;
-
-	void Update ()
+    float widthScreen = 6;
+    public Transform player;
+    private void Start()
+    {
+        Camera.main.orthographicSize = widthScreen / Screen.width * Screen.height / 2;
+    }
+    void Update ()
 	{
 		if (player.position.y > transform.position.y)
 		{
