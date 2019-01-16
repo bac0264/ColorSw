@@ -11,11 +11,13 @@ public class ShopManager : MonoBehaviour
     public List<Item> boughtList = new List<Item>();
     public List<Sprite> imageItemList = new List<Sprite>();
 
+
     public string urlShop;
     public int count;
     public int currentItemID = 0;
     public Transform container;
     public GameObject prefItem;
+    public GameObject imageCurItem;
 
     // update UI
     public virtual void UpdateUI()
@@ -48,5 +50,6 @@ public class ShopManager : MonoBehaviour
     public virtual void saving(){}
     
     public virtual void loading(){}
+    public virtual void updateImageCur(int i) { }
 }
 

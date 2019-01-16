@@ -27,7 +27,7 @@ public class MenuManager : MonoBehaviour
 
     public void Shop()
     {
-        SceneManager.LoadScene("Shop");
+        LevelChanger.instance.nextScene("Shop");
     }
 
     public void Rank()

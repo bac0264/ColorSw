@@ -98,5 +98,11 @@ public class ItemShop : ShopManager
         coinManager.savingCoin();
         SaveLoad.instance.savingID(this, "id");
     }
+
+    override
+    public void updateImageCur(int i)
+    {
+        imageCurItem.GetComponent<Image>().sprite = imageItemList[i];
+    }
 }
 

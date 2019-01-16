@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 public class Process : MonoBehaviour
 {
     public static Process instance;
@@ -17,11 +18,12 @@ public class Process : MonoBehaviour
     public Transform container;
     public GameObject player;
     public GameObject defaultBarrier;
+    public GameObject panel;
 
     public GamePlay mode;
-    
 
-    public enum GamePlay{
+
+    public enum GamePlay {
         PlayGame,
         Home,
         Replay,
@@ -66,17 +68,22 @@ public class Process : MonoBehaviour
     }
     IEnumerator timetoBack()
     {
+        GameObject pause_1 = GameObject.FindGameObjectWithTag("Pause_1");
+        GameObject pause_2 = GameObject.FindGameObjectWithTag("Pause_2");
+        Time.timeScale = 1;
+        StartCoroutine(panelFadeIn(0.5f));
+        pause_1.transform.DOScale(0, 0.2f);
+        pause_2.transform.DOScale(0, 0.2f);
         // resetup barrier default
-        defaultBarrier.transform.DOMoveY(barriderDefaultOut.y, 0.3f);
         // scale up
-        Tween fade = mainManager.transform.DOScale(0, 0.3f);
-       // container.DOScale(0, 0.2f);
-        Camera.main.transform.DOMoveY(0, 0.5f);
-
-        yield return fade.WaitForCompletion();
+        // Tween fade = mainManager.transform.DOScale(0, 0.3f);
+        // container.DOScale(0, 0.2f);
+        defaultBarrier.transform.DOMoveY(barriderDefaultOut.y, 0.3f);
+        yield return new WaitForSeconds(0.5f);
 
         _setupBarrier();
         // hide maingame and container
+        Camera.main.transform.DOMoveY(0, 0.5f);
         mainManager.SetActive(false);
         mainManager.transform.localScale = scaleDefault;
         container.gameObject.SetActive(false);
@@ -84,6 +91,7 @@ public class Process : MonoBehaviour
 
 
         // active menu game
+        StartCoroutine(panelFadeOut(0.2f));
         menuManager.SetActive(true);
         deleteContainer();
         menuManager.GetComponent<Animator>().Play("In");
@@ -106,9 +114,11 @@ public class Process : MonoBehaviour
     }
     IEnumerator timetoPlay()
     {
+        StartCoroutine(panelFadeIn(0.8f));
         menuManager.GetComponent<Animator>().Play("Out");
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(0.8f);
         menuManager.SetActive(false);
+        StartCoroutine(panelFadeOut(0.3f));
         mainManager.SetActive(true);
         container.gameObject.SetActive(true);
         //player.GetComponent<Player>().tutorialIn();
@@ -125,14 +135,15 @@ public class Process : MonoBehaviour
     }
     IEnumerator replay()
     {
+        StartCoroutine(panelFadeIn(0.5f));
+        yield return new WaitForSeconds(0.5f);
         _moveCamera();
         loseManager.SetActive(false);
-        yield return new WaitForSeconds(0.1f);
-
+        StartCoroutine(panelFadeOut(0.3f));
         //
         mainManager.SetActive(true);
         container.gameObject.SetActive(true);
-       // player.GetComponent<Player>().tutorialIn();
+        // player.GetComponent<Player>().tutorialIn();
         defaultBarrier.SetActive(true);
         defaultBarrier.transform.DOMoveY(barriderDefaultIn.y, 0.3f);
     }
@@ -144,13 +155,16 @@ public class Process : MonoBehaviour
     }
     IEnumerator lose()
     {
+        StartCoroutine(panelFadeIn(0.5f));
+        yield return new WaitForSeconds(0.5f);
+        player.SetActive(true);
         _moveCamera();
         mainManager.SetActive(false);
         _setupBarrier();
         deleteContainer();
-        yield return new WaitForSeconds(0.1f);
         container.gameObject.SetActive(false);
-        loseManager.GetComponent<LoseManager>().updateScore();  
+        loseManager.GetComponent<LoseManager>().updateScore();
+        StartCoroutine(panelFadeOut(0.3f));
         loseManager.SetActive(true);
     }
 
@@ -161,12 +175,14 @@ public class Process : MonoBehaviour
     }
     IEnumerator timetoBack_2()
     {
+        StartCoroutine(panelFadeIn(0.5f));
+        yield return new WaitForSeconds(0.5f);
         _moveCamera();
         loseManager.SetActive(false);
+        StartCoroutine(panelFadeOut(0.3f));
         menuManager.SetActive(true);
         deleteContainer();
         menuManager.GetComponent<Animator>().Play("In");
-        yield return null;
     }
     void _setupBarrier()
     {
@@ -185,4 +201,56 @@ public class Process : MonoBehaviour
     {
         Camera.main.transform.DOMoveY(0, 0);
     }
+
+    IEnumerator panelFadeIn(float durantion)
+    {
+        Transform _panel = panel.transform.GetChild(0);
+        _panel.gameObject.SetActive(true);
+        Tween fadeIn = _panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 1), durantion);
+        yield return fadeIn.WaitForCompletion();
+    }
+    IEnumerator panelFadeIn(float durantion, float a)
+    {
+        Transform _panel = panel.transform.GetChild(0);
+        _panel.gameObject.SetActive(true);
+        Tween fadeIn = _panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, a), durantion);
+        yield return fadeIn.WaitForCompletion();
+    }
+    IEnumerator panelFadeOut(float durantion)
+    {
+        Transform _panel = panel.transform.GetChild(0);
+        Tween fadeOut = _panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), durantion);
+        yield return fadeOut.WaitForCompletion();
+        _panel.gameObject.SetActive(false);
+    }
+
+    public void _Pause()
+    {
+        StartCoroutine(_pause(0.2f));
+    }
+    IEnumerator _pause(float durantion)
+    {
+        GameObject pause_1 = GameObject.FindGameObjectWithTag("Pause_1");
+        GameObject pause_2 = GameObject.FindGameObjectWithTag("Pause_2");
+        StartCoroutine(panelFadeIn(durantion, 160f/255));
+        pause_1.transform.DOScale(1, durantion);
+        pause_2.transform.DOScale(1, durantion);
+        yield return new WaitForSeconds(durantion);
+        Time.timeScale = 0;
+    }
+    public void _Continue()
+    {
+        StartCoroutine(_continue(0.2f));
+    }
+    IEnumerator _continue(float durantion)
+    {
+        Time.timeScale = 1;
+        GameObject pause_1 = GameObject.FindGameObjectWithTag("Pause_1");
+        GameObject pause_2 = GameObject.FindGameObjectWithTag("Pause_2");
+        pause_1.transform.DOScale(0, durantion);
+        pause_2.transform.DOScale(0, durantion);
+        StartCoroutine(panelFadeOut(durantion));
+        yield return new WaitForSeconds(durantion);
+    }
+    
 }

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     public Color colorPink;
 
     public GameObject tutorial;
-
+    public GameObject effect;
     const int addCoin = 1;
     const int I_distanceTutorial = -3;
     const int O_distanceTutorial = -6;
@@ -43,11 +43,6 @@ public class Player : MonoBehaviour
     {
         SaveLoad.instance.loadingID(ref currentID, "id");
         gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[currentID];
-    }
-    public void tutorialIn()
-    {
-        tutorial.SetActive(true);
-        tutorial.transform.DOMoveY(I_distanceTutorial, 0f);
     }
     IEnumerator _out()
     {
@@ -68,7 +63,7 @@ public class Player : MonoBehaviour
             if (temp == 1)
             {
                 gameObject.GetComponent<Collider2D>().isTrigger = true;
-                tutorialOut();
+                //tutorialOut();
             }
             rb.velocity = Vector2.up * jumpForce;
         }
@@ -92,8 +87,7 @@ public class Player : MonoBehaviour
         if (col.tag != currentColor && col.tag != "Coin" && col.tag != "Check")
         {
             Debug.Log("GAME OVER!");
-            Process.instance._lose();
-            
+            StartCoroutine(timetoLose());
         }
         if (col.tag == "Check")
         {
@@ -108,7 +102,19 @@ public class Player : MonoBehaviour
         }
 
     }
-
+    IEnumerator timetoLose()
+    {
+        Color color = new Color(gameObject.GetComponent<SpriteRenderer>().color.r, gameObject.GetComponent<SpriteRenderer>().color.g
+            , gameObject.GetComponent<SpriteRenderer>().color.b, gameObject.GetComponent<SpriteRenderer>().color.a);
+        rb.bodyType = RigidbodyType2D.Static;
+        gameObject.GetComponent<SpriteRenderer>().DOColor(new Color(color.r,color.g,color.b, 0),0);
+        Destroy(Instantiate(effect, gameObject.transform.position, Quaternion.identity),1.5f);
+        yield return new WaitForSeconds(1.5f);
+        gameObject.GetComponent<SpriteRenderer>().DOColor(new Color(color.r, color.g, color.b, 1), 0);
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        Process.instance._lose();
+        gameObject.SetActive(false);
+    }
     void SetRandomColor()
     {
         int index = Random.Range(0, 4);
@@ -150,7 +156,6 @@ public class Player : MonoBehaviour
 
     public void setupPlayer(Vector3 pos)
     {
-        tutorialIn();
         gameObject.GetComponent<Collider2D>().isTrigger = false;
         temp = 0;
         score = 0;

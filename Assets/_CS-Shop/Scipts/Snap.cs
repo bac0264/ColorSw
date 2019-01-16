@@ -27,7 +27,8 @@ public class Snap : MonoBehaviour
         if (bttnDistance == 0 && btnn.Count >= 2)
         {
             bttnDistance = (int)Mathf.Abs(btnn[btnn.Count - 1].GetComponent<RectTransform>().anchoredPosition.x - btnn[btnn.Count - 2].GetComponent<RectTransform>().anchoredPosition.x);
-            _initPos((minButtonNum) * (-bttnDistance));
+            if (bttnDistance != 0)
+                _initPos((minButtonNum) * (-bttnDistance));
         }
         if (checkStart)
         {
@@ -55,7 +56,7 @@ public class Snap : MonoBehaviour
     public void LerpToImage(int position)
     {
         float newX = Mathf.Lerp(panel.anchoredPosition.x, position, 0.1f);
-      //  float newX = position;
+        //  float newX = position;
         Vector2 newPosition = new Vector2(newX, panel.anchoredPosition.y);
         panel.anchoredPosition = newPosition;
     }

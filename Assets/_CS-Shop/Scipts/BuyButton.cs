@@ -10,6 +10,7 @@ public class BuyButton : MonoBehaviour
     public GameObject effectBuyingItem;
     public Text state; // Unlock or lock
     public Text itemCoinText;
+    public int lastBoughtItem;
     private const string unlock = "UNLOCK";
     private void Start()
     {
@@ -18,9 +19,10 @@ public class BuyButton : MonoBehaviour
     private void Update()
     {
         if (!shopManager.snap.getDrag())
-        {
+        { 
             itemID = shopManager.snap.getMinButtonNum();
             int i = getIndexOfItem();
+            // save lastboughtItem
             if (itemID == -1)
             {
                 Debug.Log("Error");
@@ -33,6 +35,7 @@ public class BuyButton : MonoBehaviour
     // Show BuyButton (Sate, Coin)
     public void checkShow(int i)
     {
+        shopManager.updateImageCur(i);
         itemCoinText.text = shopManager.itemList[i].itemCoin.ToString();
         if (!shopManager.itemList[i].bought)
         {
@@ -67,7 +70,8 @@ public class BuyButton : MonoBehaviour
         {
             _updateUI(itemID);
         }
-
+        else _updateUI(lastBoughtItem);
+        LevelChanger.instance.nextScene("Main");
         
     }
     // mua item
@@ -110,7 +114,6 @@ public class BuyButton : MonoBehaviour
     {
         shopManager._updateItem(_itemID);
         shopManager.saving();
-        SceneManager.LoadScene("Main");
     }
     // lay vi tri cua item da pick
     public int getIndexOfItem()
@@ -124,5 +127,25 @@ public class BuyButton : MonoBehaviour
             }
         }
         return 0;
+    }
+
+    public void marked()
+    {
+        for (int i = 0; i < shopManager.boughtList.Count; i++)
+        {
+            // check id
+            if (itemID == shopManager.boughtList[i].itemID)
+            {   
+                for(int j = 0; j < shopManager.itemList.Count; j++)
+                {
+                    if(shopManager.itemList[j].itemID == shopManager.boughtList[i].itemID)
+                    {
+                        lastBoughtItem = j;
+                        Debug.Log("last: " + j);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
