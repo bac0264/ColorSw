@@ -8,6 +8,8 @@ public class Generator : MonoBehaviour
     public GameObject coin;
     public GameObject changeColor;
     public Transform container;
+
+
     public float distance = 10; // distance between player and pref to generate
     public float distanceCC = 4; // distance between changeColor and pref to generate
 

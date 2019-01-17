@@ -4,6 +4,8 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 public class Player : MonoBehaviour
 {
 
@@ -33,6 +35,9 @@ public class Player : MonoBehaviour
     public int currentID = 0;
     public int score = 0;
     public int temp = 0;
+
+    public object EventSystemManager { get; private set; }
+
     void Start()
     {
         SetRandomColor();
@@ -59,14 +64,49 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
         {
-            temp++;
-            if (temp == 1)
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+            else
             {
-                gameObject.GetComponent<Collider2D>().isTrigger = true;
-                //tutorialOut();
+                temp++;
+                if (temp == 1)
+                {
+                    gameObject.GetComponent<Collider2D>().isTrigger = true;
+                    //tutorialOut();
+
+                }
+                rb.velocity = Vector2.up * jumpForce;
             }
-            rb.velocity = Vector2.up * jumpForce;
         }
+        if (Input.touchCount > 0)
+        {
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                {
+                    return;
+                }
+                else
+                {
+                    temp++;
+                    if (temp == 1)
+                    {
+                        gameObject.GetComponent<Collider2D>().isTrigger = true;
+                        //tutorialOut();
+                    }
+                    rb.velocity = Vector2.up * jumpForce;
+                }
+
+                //  if (gameStatus == GameStatus.READY) gameStatus = GameStatus.PLAYING;
+            }
+            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+            }
+            if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            {
+            }
+        }
+        // else if (Input.GetMouseButtonUp(0))
     }
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -91,14 +131,17 @@ public class Player : MonoBehaviour
         }
         if (col.tag == "Check")
         {
-            score += addScore;
-            scoreManager.setScore(score);
-            scoreManager.setHighScore(scoreManager.getScore());
-            scoreManager.scoreDisplay();
             col.GetComponent<CheckObject>().setCheck(true);
             Vector3 pos = transform.position;
             pos.y += generator.distance;
             generator.generateObject(col.gameObject, pos);
+        }
+        if(col.tag == "CheckBarrier")
+        {
+            score += addScore;
+            scoreManager.setScore(score);
+            scoreManager.setHighScore(scoreManager.getScore());
+            scoreManager.scoreDisplay();
         }
 
     }

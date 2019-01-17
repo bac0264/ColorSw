@@ -1,12 +1,13 @@
 Android
 PlayerPath?
-C:/Users/User/Desktop/ColorSw/CS_20191601_1.apk
+C:/Users/pv/Desktop/ColorSw/test.apk
 SceneListBegin?
 Assets/Scenes/Main.unity
 Assets/Scenes/Shop.unity
 SceneListEnd?
 bd01f5cef60984451ba170d0deaecf42 Assembly-CSharp.dll:.ShopManager
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
+b41f6a02beff5d31b9210834dce1767e Assembly-CSharp.dll:.UICanvasManager
 2ddb1eddce8137c07117fd0d8b77753c Assembly-CSharp.dll:.Rotator
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -21,8 +22,12 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+0e2dcecfc1a59863d6161482eaa244b3 Assembly-CSharp.dll:EpicToonFX.ETFXPitchRandomizer
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Fade
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.PEDestoryTimed
 94a267468bc8b09ec0364b22d51f19c9 Assembly-CSharp.dll:.Process
+46280057aba92e5945195d40246a7bdf Assembly-CSharp.dll:.ETFXSceneManager
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.Editor.dll:UnityEngine.Advertisements.Editor.Placeholder
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -56,7 +61,9 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.BGScaler
 98ad81e9f689a492509f07e75b810aaa Unity.TextMeshPro.dll:TMPro.TMP_InputField
+b8e953f3ce9159257cbdaf9f866bdeae Assembly-CSharp.dll:.ETFXProjectileScript
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 5fc094978ce3e3591a7500ed380d854a UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -124,14 +131,19 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 b2aed5e038006e995fe59b0d50afead2 Assembly-CSharp.dll:.BuyButton
 94017dcc9f00fe671ea7dc427b4da011 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 65b3a3b9a7779d539ec75a3ceddebdba Assembly-CSharp.dll:.FollowPlayer
+b5aaf686465544e9e949e46e293afee1 Assembly-CSharp.dll:EpicToonFX.ETFXMouseOrbit
+0912db8419735ecb16044b834208729d Assembly-CSharp.dll:EpicToonFX.ETFXLoopScript
 42da108d42a5224e91e91a1f158ba852 Assembly-CSharp.dll:.LoseManager
+38e8a3460b28bb84ebff0ae53ef0287d Assembly-CSharp.dll:.LevelChanger
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
+e888ef4305b8fac9cd5510fefa0636bf Assembly-CSharp.dll:EpicToonFX.ETFXFireProjectile
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 704dcd31abc789439bc3f3cd10b58c2b DOTween.dll:DG.Tweening.Core.DOTweenComponent
 49cbb3369dc9b7b81a56e2f87e67a737 DOTween.dll:DG.Tweening.Core.DOTweenSettings
 bd01f5cef60984451ba170d0deaecf42 Assembly-CSharp.dll:.ItemShop
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
+79566861074b80c5467fa81dddcf4f5a Assembly-CSharp.dll:EpicToonFX.ETFXRotation
 d881298ce8eea720a5916fbb383013c7 Assembly-CSharp.dll:.Snap
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -164,32 +176,20 @@ fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
+8e5e00ca42eeebc1eae2f91fabb1ee02 Assembly-CSharp.dll:EpicToonFX.ETFXButtonScript
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.SaveLoad
+a4900d574c1d1a9001f0f83b0dddb24d Assembly-CSharp.dll:.ParticleEffectsLibrary
 f85bd6f7e75dc8472268c8569a3d0abc Assembly-CSharp.dll:.CoinManager
 844f398a1372e49b5e1e6de56915cad2 Assembly-CSharp.dll:.MenuManager
 a4f0a4f62100f1a4fb5cbe0e00dde83f Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 5fc094978ce3e3591a7500ed380d854a Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
 6684052db38ea5ebda32d3e13dd8ead4 Assembly-CSharp.dll:.Player
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+2890c468cf196dca883ea02bde96343e Assembly-CSharp.dll:EpicToonFX.ETFXLightFade
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
+24b2edb739e02ab9678256f4cc52b87d Assembly-CSharp.dll:.PEButtonScript
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 0c7501b97962e919f794b7618931c419 Assembly-CSharp.dll:.Generator
 e01181e9c4a06574cf7088b639d75681 Assembly-CSharp.dll:.ButtonManager
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.BGScaler
-b41f6a02beff5d31b9210834dce1767e Assembly-CSharp.dll:.UICanvasManager
-0e2dcecfc1a59863d6161482eaa244b3 Assembly-CSharp.dll:EpicToonFX.ETFXPitchRandomizer
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.PEDestoryTimed
-46280057aba92e5945195d40246a7bdf Assembly-CSharp.dll:.ETFXSceneManager
-b8e953f3ce9159257cbdaf9f866bdeae Assembly-CSharp.dll:.ETFXProjectileScript
-b5aaf686465544e9e949e46e293afee1 Assembly-CSharp.dll:EpicToonFX.ETFXMouseOrbit
-0912db8419735ecb16044b834208729d Assembly-CSharp.dll:EpicToonFX.ETFXLoopScript
-e888ef4305b8fac9cd5510fefa0636bf Assembly-CSharp.dll:EpicToonFX.ETFXFireProjectile
-79566861074b80c5467fa81dddcf4f5a Assembly-CSharp.dll:EpicToonFX.ETFXRotation
-8e5e00ca42eeebc1eae2f91fabb1ee02 Assembly-CSharp.dll:EpicToonFX.ETFXButtonScript
-a4900d574c1d1a9001f0f83b0dddb24d Assembly-CSharp.dll:.ParticleEffectsLibrary
-2890c468cf196dca883ea02bde96343e Assembly-CSharp.dll:EpicToonFX.ETFXLightFade
-24b2edb739e02ab9678256f4cc52b87d Assembly-CSharp.dll:.PEButtonScript
-38e8a3460b28bb84ebff0ae53ef0287d Assembly-CSharp.dll:.LevelChanger
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Fade
